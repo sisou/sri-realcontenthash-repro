@@ -1,8 +1,15 @@
+const { SubresourceIntegrityPlugin } = require('webpack-subresource-integrity')
+
 module.exports = {
-    integrity: process.env.NODE_ENV === 'production',
     configureWebpack: {
         optimization: {
             realContentHash: true
-        }
+        },
+        output: {
+            crossOriginLoading: "anonymous"
+        },
+        plugins: [
+            new SubresourceIntegrityPlugin()
+        ]
     }
 }
